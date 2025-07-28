@@ -470,6 +470,9 @@
     <ClCompile Include="..\vgmplay\VGMPlay\chips\yam.c">
       <Filter>Source Files\vgmplay\chips</Filter>
     </ClCompile>
+    <ClCompile Include="..\gme\Data_Reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\gme\Ay_Apu.h">

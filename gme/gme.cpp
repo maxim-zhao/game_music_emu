@@ -366,6 +366,7 @@ void      gme_equalizer      ( Music_Emu const* gme, gme_equalizer_t* o )  { *o 
 const char* gme_voice_name   ( Music_Emu const* gme, int i )            { return gme->voice_name( i ); }
 gme_err_t gme_save           ( Music_Emu const* gme, gme_writer_t writer, void* your_data ) { return gme->save( writer, your_data ); }
 void      gme_mute_effects   ( Music_Emu* gme, gme_bool disable )       { gme->mute_effects(disable); }
+void gme_set_emulator_options(Music_Emu* gme, int ym2413_core) { gme->set_emulator_options(ym2413_core); }
 
 void gme_effects( Music_Emu const* gme, gme_effects_t* out )
 {

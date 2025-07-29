@@ -46,7 +46,9 @@ public:
     
     void set_mute(int mask);
 
-// Implementation
+    void set_emulator_options(int ym2413_core);
+
+    // Implementation
 public:
 	Vgm_Core();
 	~Vgm_Core();

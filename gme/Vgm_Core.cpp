@@ -235,3 +235,10 @@ void Vgm_Core::skip_( int count )
 {
 	SeekVGM( vgmp, true, count / 2 );
 }
+
+void Vgm_Core::set_emulator_options(int ym2413_core)
+{
+	// TODO: hook loads more stuff up here...
+	vgmp->ChipOpts[0].YM2413.EmuCore = vgmp->ChipOpts[1].YM2413.EmuCore = ym2413_core;
+}
+

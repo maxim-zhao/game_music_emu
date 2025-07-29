@@ -589,3 +589,8 @@ blargg_err_t Vgm_Emu::save_(gme_writer_t writer, void* your_data)
     
     return write_gd3( writer, your_data, &metadata, &metadata_j );
 }
+
+void Vgm_Emu::set_emulator_options_(int ym2413_core)
+{
+    core.set_emulator_options(ym2413_core);
+}

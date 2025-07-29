@@ -305,6 +305,7 @@ particular, gme_err_details(gme_code_to_err(code)) will be "" in most cases. */
 gme_err_t gme_code_to_err( int code );
 
 
+void gme_set_emulator_options(gme_t* gme, int ym2413_core);
 
 /* Deprecated */
 typedef gme_t Music_Emu;

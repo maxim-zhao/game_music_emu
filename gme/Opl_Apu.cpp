@@ -29,12 +29,12 @@ blargg_err_t Opl_Apu::init( long clock, long rate, blip_time_t period, type_t ty
 	case type_msxmusic:
 	case type_smsfmunit:
 		opl = OPLL_new( (BOOST::uint32_t) clock, (BOOST::uint32_t) rate );
-        OPLL_SetChipMode( (OPLL *) opl, 0);
+        OPLL_setChipType( (OPLL *) opl, 0);
 		break;
 
 	case type_vrc7:
 		opl = OPLL_new( (BOOST::uint32_t) clock, (BOOST::uint32_t) rate );
-        OPLL_SetChipMode((OPLL *) opl, 1 );
+        OPLL_setChipType((OPLL *) opl, 1 );
         OPLL_setPatch((OPLL *) opl, vrc7_inst);
 		break;
 
@@ -203,36 +203,26 @@ void Opl_Apu::run_until( blip_time_t end_time )
 		case type_smsfmunit:
 		case type_vrc7:
 			{
-				e_int32 bufMO[ 1024 ];
-				e_int32 bufRO[ 1024 ];
-				e_int32 * buffers[2] = { bufMO, bufRO };
-
-				while ( count > 0 )
-				{
-					unsigned todo = count;
-					if ( todo > 1024 ) todo = 1024;
-					OPLL_calc_stereo( (OPLL *) opl, buffers, todo, -1 );
+	            for (int i = 0u; i < count; i++)
+	            {
+		            // Get one sample
+		            int amp  = OPLL_calc(static_cast<OPLL*>(opl));
 
 					if ( output_ )
 					{
 						int last_amp = this->last_amp;
-						for ( unsigned i = 0; i < todo; i++ )
+						int delta = amp - last_amp;
+						if ( delta )
 						{
-							int amp = bufMO [i] + bufRO [i];
-							int delta = amp - last_amp;
-							if ( delta )
-							{
-								last_amp = amp;
-								synth.offset_inline( time, delta, output_ );
-							}
-							time += period_;
+							last_amp = amp;
+							synth.offset_inline( time, delta, output_ );
 						}
+						time += period_;
+
 						this->last_amp = last_amp;
 					}
-					else time += period_ * todo;
-
-					count -= todo;
-				}
+					else time += period_;
+	            }
 			}
 			break;
 

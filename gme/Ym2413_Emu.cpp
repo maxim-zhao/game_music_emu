@@ -2,8 +2,24 @@
 
 #include "Ym2413_Emu.h"
 
+#include <algorithm>
+
 extern "C" {
 #include "../vgmplay/VGMPlay/chips/emu2413.h"
+}
+
+
+static Ym2413_Emu::sample_t saturate(int value)
+{
+    if (value > std::numeric_limits<Ym2413_Emu::sample_t>::max()) 
+    {
+        return std::numeric_limits<Ym2413_Emu::sample_t>::max();
+    }
+    if (value < std::numeric_limits<Ym2413_Emu::sample_t>::min()) 
+	{
+        return std::numeric_limits<Ym2413_Emu::sample_t>::min();
+    }
+    return static_cast<Ym2413_Emu::sample_t>(value);
 }
 
 Ym2413_Emu::Ym2413_Emu() { opll = 0; }
@@ -24,8 +40,8 @@ int Ym2413_Emu::set_rate( int sample_rate, int clock_rate )
 	opll = OPLL_new( clock_rate, sample_rate );
 	if ( !opll )
 		return 1;
-    
-    OPLL_SetChipMode( (OPLL *) opll, 0 );
+
+    OPLL_setChipType( (OPLL *) opll, 0 );
 	
 	reset();
 	return 0;
@@ -34,7 +50,7 @@ int Ym2413_Emu::set_rate( int sample_rate, int clock_rate )
 void Ym2413_Emu::reset()
 {
 	OPLL_reset( (OPLL *) opll );
-	OPLL_SetMuteMask( (OPLL *) opll, 0 );
+	OPLL_setMask( (OPLL *) opll, 0 );
 }
 
 void Ym2413_Emu::write( int addr, int data )
@@ -45,36 +61,22 @@ void Ym2413_Emu::write( int addr, int data )
 
 void Ym2413_Emu::mute_voices( int mask )
 {
-	OPLL_SetMuteMask( (OPLL *) opll, mask );
+	OPLL_setMask( (OPLL *) opll, mask );
 }
 
 void Ym2413_Emu::run( int pair_count, sample_t* out )
 {
-	e_int32 bufMO[ 1024 ];
-	e_int32 bufRO[ 1024 ];
-	e_int32 * buffers[2] = { bufMO, bufRO };
-
-	while (pair_count > 0)
+	for (int i = 0; i < pair_count; i++)
 	{
-		int todo = pair_count;
-		if (todo > 1024) todo = 1024;
-		OPLL_calc_stereo( (OPLL *) opll, buffers, todo, -1 );
+		// Get one sample
+		int output = OPLL_calc(static_cast<OPLL*>(opll));
 
-		for (int i = 0; i < todo; i++)
-		{
-			int output_l, output_r;
-			int output = bufMO [i];
-			output += bufRO [i];
-			output *= 3;
-			output_l = output + out [0];
-			output_r = output + out [1];
-			if ( (short)output_l != output_l ) output_l = 0x7FFF ^ ( output_l >> 31 );
-			if ( (short)output_r != output_r ) output_r = 0x7FFF ^ ( output_r >> 31 );
-			out [0] = output_l;
-			out [1] = output_r;
-			out += 2;
-		}
+		// Scale up (arbitrarily)
+		output *= 3;
 
-		pair_count -= todo;
+		// Add and saturate to 16 bits
+		out[0] = saturate(out[0] + output);
+		out[1] = saturate(out[1] + output);
+		out += 2;
 	}
 }

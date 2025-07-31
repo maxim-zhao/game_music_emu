@@ -64,6 +64,7 @@
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -206,6 +207,8 @@
     <ClCompile Include="..\vgmplay\VGMPlay\chips\np_nes_apu.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\np_nes_dmc.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\np_nes_fds.c" />
+    <ClCompile Include="..\vgmplay\VGMPlay\chips\Nuked-OPLL\opll.c" />
+    <ClCompile Include="..\vgmplay\VGMPlay\chips\NukedOPLLWrapper.cpp" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\okim6258.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\okim6295.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\Ootake_PSG.c" />
@@ -362,6 +365,7 @@
     <ClInclude Include="..\vgmplay\VGMPlay\chips\np_nes_apu.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\np_nes_dmc.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\np_nes_fds.h" />
+    <ClInclude Include="..\vgmplay\VGMPlay\chips\NukedOPLLWrapper.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\okim6258.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\okim6295.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\Ootake_PSG.h" />

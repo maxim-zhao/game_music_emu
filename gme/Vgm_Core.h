@@ -46,7 +46,7 @@ public:
     
     void set_mute(int mask);
 
-    void set_emulator_options(int ym2413_core);
+    void set_emulator_options(int ym2413_core, int ym2612_core);
 
     // Implementation
 public:

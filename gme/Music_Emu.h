@@ -121,7 +121,7 @@ public:
 	// Equalizer preset for a TV speaker
 	static equalizer_t const tv_eq;
 
-    void set_emulator_options(int ym2413_core);
+    void set_emulator_options(int ym2413_core, int ym2612_core);
 
 // Derived interface
 protected:
@@ -179,7 +179,7 @@ protected:
     // Set track info
     virtual blargg_err_t set_track_info_( const track_info_t*, int ) { return "Not supported by this format"; }
     
-	virtual void set_emulator_options_( int ym2413_core ) { }
+	virtual void set_emulator_options_(int ym2413_core, int ym2612_core) { }
 // Implementation
 public:
 	gme_t();

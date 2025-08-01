@@ -45,7 +45,7 @@ protected:
 	virtual void set_tempo_( double );
 	virtual void mute_voices_( int mask );
 	virtual void unload();
-    void set_emulator_options_( int ym2413_core ) override;
+    void set_emulator_options_(int ym2413_core, int ym2612_core) override;
 	
 private:
 	unsigned muted_voices;

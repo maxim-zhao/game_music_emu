@@ -90,9 +90,9 @@ void Music_Emu::set_equalizer( equalizer_t const& eq )
 	set_equalizer_( eq );
 }
 
-void Music_Emu::set_emulator_options(int ym2413_core)
+void Music_Emu::set_emulator_options(int ym2413_core, int ym2612_core)
 {
-	set_emulator_options_(ym2413_core);
+	set_emulator_options_(ym2413_core, ym2612_core);
 }
 
 void Music_Emu::mute_voice( int index, bool mute )

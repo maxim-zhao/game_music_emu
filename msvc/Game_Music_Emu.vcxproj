@@ -185,7 +185,7 @@
     <ClCompile Include="..\vgmplay\VGMPlay\chips\c6280intf.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\dac_control.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\emu2149.c" />
-    <ClCompile Include="..\vgmplay\VGMPlay\chips\emu2413.c" />
+    <ClCompile Include="..\vgmplay\VGMPlay\chips\emu2413\emu2413.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\es5503.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\es5506.c" />
     <ClCompile Include="..\vgmplay\VGMPlay\chips\fm.c" />
@@ -347,7 +347,6 @@
     <ClInclude Include="..\vgmplay\VGMPlay\chips\ChipIncl.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\dac_control.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\emu2149.h" />
-    <ClInclude Include="..\vgmplay\VGMPlay\chips\emu2413.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\emuconfig.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\emutypes.h" />
     <ClInclude Include="..\vgmplay\VGMPlay\chips\es5503.h" />

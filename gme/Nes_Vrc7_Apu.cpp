@@ -1,7 +1,7 @@
 #include "Nes_Vrc7_Apu.h"
 
 extern "C" {
-#include "../vgmplay/VGMPlay/chips/emu2413.h"
+#include "../vgmplay/VGMPlay/chips/emu2413/emu2413.h"
 }
 
 #include <string.h>

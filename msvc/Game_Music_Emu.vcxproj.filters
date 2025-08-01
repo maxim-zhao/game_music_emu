@@ -39,6 +39,9 @@
     <Filter Include="Source Files\vgmplay\chips\nuked-opn2">
       <UniqueIdentifier>{ec7308ca-6b53-48a8-81d4-9e2775bc9ed5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\vgmplay\chips\emu2413">
+      <UniqueIdentifier>{d6ba3235-fc80-4e4e-83c4-37aec3db2c74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\gme\Ay_Apu.cpp">
@@ -341,9 +344,6 @@
     <ClCompile Include="..\vgmplay\VGMPlay\chips\emu2149.c">
       <Filter>Source Files\vgmplay\chips</Filter>
     </ClCompile>
-    <ClCompile Include="..\vgmplay\VGMPlay\chips\emu2413.c">
-      <Filter>Source Files\vgmplay\chips</Filter>
-    </ClCompile>
     <ClCompile Include="..\vgmplay\VGMPlay\chips\es5503.c">
       <Filter>Source Files\vgmplay\chips</Filter>
     </ClCompile>
@@ -490,6 +490,9 @@
     </ClCompile>
     <ClCompile Include="..\vgmplay\VGMPlay\chips\NukedOPN2Wrapper.cpp">
       <Filter>Source Files\vgmplay\chips</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vgmplay\VGMPlay\chips\emu2413\emu2413.c">
+      <Filter>Source Files\vgmplay\chips\emu2413</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -800,9 +803,6 @@
       <Filter>Header Files\vgmplay\chips</Filter>
     </ClInclude>
     <ClInclude Include="..\vgmplay\VGMPlay\chips\emu2149.h">
-      <Filter>Header Files\vgmplay\chips</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vgmplay\VGMPlay\chips\emu2413.h">
       <Filter>Header Files\vgmplay\chips</Filter>
     </ClInclude>
     <ClInclude Include="..\vgmplay\VGMPlay\chips\emutypes.h">

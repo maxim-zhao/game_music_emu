@@ -36,6 +36,9 @@
     <Filter Include="Source Files\vgmplay\chips\nuked-opll">
       <UniqueIdentifier>{d0535973-ef97-48ac-94c8-1197188c0f57}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\vgmplay\chips\nuked-opn2">
+      <UniqueIdentifier>{ec7308ca-6b53-48a8-81d4-9e2775bc9ed5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\gme\Ay_Apu.cpp">
@@ -481,6 +484,12 @@
     </ClCompile>
     <ClCompile Include="..\vgmplay\VGMPlay\chips\Nuked-OPLL\opll.c">
       <Filter>Source Files\vgmplay\chips\nuked-opll</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vgmplay\VGMPlay\chips\Nuked-OPN2\ym3438.c">
+      <Filter>Source Files\vgmplay\chips\nuked-opn2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vgmplay\VGMPlay\chips\NukedOPN2Wrapper.cpp">
+      <Filter>Source Files\vgmplay\chips</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -945,9 +954,6 @@
     </ClInclude>
     <ClInclude Include="..\vgmplay\VGMPlay\chips\yam.h">
       <Filter>Header Files\vgmplay\chips</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vgmplay\VGMPlay\chips\NukedOPLLWrapper.h">
-      <Filter>Source Files\vgmplay\chips</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
